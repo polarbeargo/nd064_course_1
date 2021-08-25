@@ -45,6 +45,10 @@ def post(post_id):
 def about():
     return render_template('about.html')
 
+@app.route('/metrics',methods=['POST'])
+def metrics():
+	data = {"db_connection_count": 1, "post_count": 7}
+        return data, 200
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -64,6 +68,11 @@ def create():
             return redirect(url_for('index'))
 
     return render_template('create.html')
+
+@app.route('/healthz')
+def health():
+	status_code = flask.Response(status=200)
+	return status_code
 
 # start the application on port 3111
 if __name__ == "__main__":
