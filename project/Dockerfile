@@ -8,14 +8,15 @@ RUN apt-get -y install \
 
 WORKDIR /techtrends
 
-COPY requirements.txt /techtrends/requirements.txt
+COPY /techtrends/requirements.txt /techtrends/requirements.txt
 RUN pip3 install -r requirements.txt
 
-COPY app.py /techtrends/app.py
-COPY init_db.py /techtrends/init_db.py
+COPY /techtrends/app.py /techtrends/app.py
+COPY /techtrends/init_db.py /techtrends/init_db.py
+COPY /techtrends/schema.sql /techtrends/schema.sql
 
-RUN flask init-db
+RUN python3 /techtrends/init_db.py
 
-EXPOSE 3111
+EXPOSE 7111
 
 CMD [ "python3", "app.py" ]
