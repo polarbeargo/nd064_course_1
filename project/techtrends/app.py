@@ -1,5 +1,5 @@
 import sqlite3
-
+import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
@@ -45,11 +45,28 @@ def post(post_id):
 def about():
     return render_template('about.html')
 
-@app.route('/metrics',methods=['POST'])
+@app.route('/healthz')
+def healthcheck():
+    response = app.response_class(
+            response=json.dumps({"result":"OK - healthy"}),
+            status=200,
+            mimetype='application/json'
+    )
+
+    app.logger.info('Status request successfull')
+    return response
+
+@app.route('/metrics')
 def metrics():
-	data = {"db_connection_count": 1, "post_count": 7}
-        return data, 200
-# Define the post creation functionality 
+    response = app.response_class(
+            response=json.dumps({"status":"success","db_connection_count": 1,"post_count": 7}),
+            status=200,
+            mimetype='application/json'
+    )
+
+    app.logger.info('Metrics request successfull')
+    return response
+
 @app.route('/create', methods=('GET', 'POST'))
 def create():
     if request.method == 'POST':
@@ -69,11 +86,7 @@ def create():
 
     return render_template('create.html')
 
-@app.route('/healthz')
-def health():
-	status_code = flask.Response(status=200)
-	return status_code
-
 # start the application on port 3111
 if __name__ == "__main__":
+   logging.basicConfig(filename='app.log',level=logging.DEBUG)
    app.run(host='0.0.0.0', port='3111')
