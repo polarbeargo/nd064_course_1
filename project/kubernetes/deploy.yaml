@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+namespace: sandbox
+metadata:
+  creationTimestamp: null
+  labels:
+    app: techtrends
+  name: techtrends
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techtrends
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: techtrends
+    spec:
+      containers:
+      - image: techtrends:latest
+        name: techtrends
+        resources: {}
+        ports:
+        - containerPort: 3111
+status: {}
