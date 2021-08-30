@@ -13,6 +13,7 @@ RUN pip3 install -r requirements.txt
 
 COPY /techtrends/app.py /techtrends/app.py
 COPY /techtrends/init_db.py /techtrends/init_db.py
+COPY /techtrends/schema.sql /techtrends/schema.sql
 
 RUN python3 /techtrends/init_db.py
 
