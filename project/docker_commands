@@ -3,10 +3,10 @@
 docker build -t techtrends .
 ## Docker commands used to run the application
 # TODO: insert the docker run command
- docker run -d -p 3111:7111 catzzzlol/techtrends:v1.0.0
+ docker run -d -p  7111:3111 catzzzlol/techtrends:v1.0.0
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
-docker logs 0d938163b559b58f969582961568820c1745523717a2fb420d0858bee14ec4e4
+d logs 9ad2466228ecc51ebae5c11998e43ffcf1afc00e9844986e1849775daf83eba9
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
  * Serving Flask app "app" (lazy loading)
