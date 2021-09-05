@@ -1,1 +1,9 @@
-name: sandbox
+## Set the API endpoint used to create the Deployment resource.
+apiVersion: apps/v1
+## Define the type of the resource.
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: sandbox
+spec: {}
+status: {}
