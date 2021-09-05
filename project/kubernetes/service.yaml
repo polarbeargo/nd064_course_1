@@ -11,8 +11,8 @@ metadata:
 ## Define the desired configuration for the Service resource.
 spec:
   ## Define the ports that the service should serve on. 
-  ## For example, the service is exposed on port 8111, and
-  ## directs the traffic to the pods on port 6112, using TCP.
+  ## For example, the service is exposed on port 4111, and
+  ## directs the traffic to the pods on port 3111, using TCP.
   ports:
   - port: 4111
     protocol: TCP
