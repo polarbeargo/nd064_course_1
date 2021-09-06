@@ -3,11 +3,19 @@ import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
+count = 0
+
+def db_connection_count():
+    global count
+    count+=1
+    return count
+
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    db_connection_count()
     return connection
 
 # Function to get a post using its ID
@@ -58,8 +66,10 @@ def healthcheck():
 
 @app.route('/metrics')
 def metrics():
+    con = get_db_connection()
+    posts_count = con.execute('SELECT * FROM posts').fetchall()
     response = app.response_class(
-            response=json.dumps({"status":"success","db_connection_count": get_db_connection().count(),"post_count": get_post().count()}),
+            response=json.dumps({"status":"success","db_connection_count": count,"post_count": str(len(posts_count))}),
             status=200,
             mimetype='application/json'
     )
