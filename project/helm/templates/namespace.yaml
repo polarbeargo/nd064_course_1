@@ -4,6 +4,6 @@ apiVersion: apps/v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: sandbox
+  name: {{ .Values.namespace.name }}
 spec: {}
 status: {}
