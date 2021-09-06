@@ -8,8 +8,7 @@ count = 0
 def db_connection_count():
     global count
     count+=1
-    return count
-
+    
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
@@ -68,6 +67,7 @@ def healthcheck():
 def metrics():
     con = get_db_connection()
     posts_count = con.execute('SELECT * FROM posts').fetchall()
+    con.close()
     response = app.response_class(
             response=json.dumps({"status":"success","db_connection_count": count,"post_count": str(len(posts_count))}),
             status=200,
