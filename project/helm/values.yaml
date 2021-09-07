@@ -1,6 +1,7 @@
 namespace:
   name: sandbox
- 
+  app: techtrends
+  
 service:
   port: 4111
   targetPort: 3111
@@ -8,7 +9,7 @@ service:
   type: ClusterIP
 
 image:
-  repository: techtrends 
+  repository: catzzzlol/techtrends 
   tag: latest
   pullPolicy: IfNotPresent
 
