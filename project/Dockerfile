@@ -5,12 +5,9 @@ COPY ./techtrends .
 RUN apt-get clean \
     && apt-get -y update
 
-RUN apt-get -y install \
-    python3-pip
-
-RUN pip3 install -r requirements.txt
-RUN python3 init_db.py
+RUN pip install -r requirements.txt
+RUN python init_db.py
 
 EXPOSE 7111
 
-CMD [ "python3", "app.py" ]
+CMD [ "python", "app.py" ]
