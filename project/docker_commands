@@ -6,11 +6,21 @@ docker build -t techtrends .
  docker run -d -p  7111:3111 catzzzlol/techtrends:v1.0.0
 ## Docker commands used to get the application logs
 # TODO: insert the docker logs command
-d logs 9ad2466228ecc51ebae5c11998e43ffcf1afc00e9844986e1849775daf83eba9
+ docker logs 7e23795d25234494404dce338d247686eccd912811f0cc94a6316fc28e47ff57
 ## Logs from the container running the TechTrends application
 # TODO: paste logs from the Docker container 
- * Serving Flask app "app" (lazy loading)
+  * Serving Flask app "app" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
+INFO:werkzeug:2021-09-09 00:16:59,783,  * Running on http://0.0.0.0:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:2021-09-09 00:17:21,035, 172.17.0.1 - - [09/Sep/2021 00:17:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:17:21,070, 172.17.0.1 - - [09/Sep/2021 00:17:21] "GET /static/css/main.css HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:17:23,396, 172.17.0.1 - - [09/Sep/2021 00:17:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:17:32,403, 172.17.0.1 - - [09/Sep/2021 00:17:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:17:43,783, 172.17.0.1 - - [09/Sep/2021 00:17:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:18:51,749, 172.17.0.1 - - [09/Sep/2021 00:18:51] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:18:59,286, 172.17.0.1 - - [09/Sep/2021 00:18:59] "POST /create HTTP/1.1" 302 -
+INFO:werkzeug:2021-09-09 00:18:59,295, 172.17.0.1 - - [09/Sep/2021 00:18:59] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:2021-09-09 00:21:36,977, 172.17.0.1 - - [09/Sep/2021 00:21:36] "GET /1 HTTP/1.1" 200 -
