@@ -112,3 +112,4 @@ def initialize_logger():
 
 if __name__ == "__main__":
     initialize_logger()
+    app.run(host='0.0.0.0', port='3111')
