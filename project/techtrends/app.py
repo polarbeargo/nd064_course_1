@@ -5,6 +5,7 @@ from flask import Flask, jsonify, json, render_template, request, url_for, redir
 from werkzeug.exceptions import abort
 
 count = 0
+db_file= 'database.db'
 
 def db_connection_count():
     global count
@@ -55,14 +56,10 @@ def about():
 
 @app.route('/healthz')
 def healthcheck():
-    response = app.response_class(
-            response=json.dumps({"result":"OK - healthy"}),
-            status=200,
-            mimetype='application/json'
-    )
-
-    app.logger.info('Status request successfull')
-    return response
+    if os.path.exists(db_file):
+        return jsonify({"result": "OK - healthy"})
+    else:
+        return jsonify({"result": "Error - Missing {}".format(db_file)}), 500
 
 @app.route('/metrics')
 def metrics():
