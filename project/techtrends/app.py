@@ -14,9 +14,12 @@ def db_connection_count():
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
-    connection = sqlite3.connect('database.db')
-    connection.row_factory = sqlite3.Row
-    db_connection_count()
+    try:
+        connection = sqlite3.connect('database.db')
+        connection.row_factory = sqlite3.Row
+        db_connection_count()
+    except:
+        app.logger.info("Error - Missing {}".format(db_file))
     return connection
 
 # Function to get a post using its ID
@@ -45,6 +48,7 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      app.logger.info("requests a(n) non-existent/existing post(s)")
       return render_template('404.html'), 404
     else:
       return render_template('post.html', post=post)
