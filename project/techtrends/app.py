@@ -54,7 +54,9 @@ def post(post_id):
       app.logger.error(day.strftime("%d/%m/%Y")+", "+time.strftime("%H:%M:%S")+" From @app.route('/<int:post_id>'): Artice with id: "+str(post_id)+" cannot be retrieved!") 
       return render_template('404.html'), 404
     else:
-      app.logger.info(date.strftime("%d/%m/%Y")+", "+time.strftime("%H:%M:%S")+" From @app.route('/<int:post_id>'): Artice "+post[2]+" retrieved!")
+      day = date.today() 
+      time = datetime.now()
+      app.logger.info(day.strftime("%d/%m/%Y")+", "+time.strftime("%H:%M:%S")+" From @app.route('/<int:post_id>'): Artice "+post[2]+" retrieved!")
       return render_template('post.html', post=post)
 
 # Define the About Us page
