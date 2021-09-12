@@ -8,17 +8,14 @@ from datetime import date, datetime
 count = 0
 db_file= 'database.db'
 
-def db_connection_count():
-    global count
-    count+=1
-    
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
     try:
         connection = sqlite3.connect('database.db')
         connection.row_factory = sqlite3.Row
-        db_connection_count()
+        global count
+        count+=1
     except:
         app.logger.info("Error - Missing {}".format(db_file))
     return connection
